@@ -3,8 +3,11 @@ package fr.worldline.spring.jdbc.main;
 import java.util.List;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import fr.worldline.spring.jdbc.configuration.JdbcConfiguration;
 import fr.worldline.spring.jdbc.dao.impl.StudentJDBCTemplate;
 import fr.worldline.spring.jdbc.model.Student;
 
@@ -12,7 +15,8 @@ public class DemoJdbc {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		ApplicationContext context = (ApplicationContext) new ClassPathXmlApplicationContext("context-beans.xml");
+		// ApplicationContext context = (ApplicationContext) new ClassPathXmlApplicationContext("context-beans.xml");
+		AbstractApplicationContext context = new AnnotationConfigApplicationContext(JdbcConfiguration.class);
 		StudentJDBCTemplate studentJdbcTemplate = (StudentJDBCTemplate) context.getBean("studentJDBCTemplate");
 		
 		/* System.out.println("Create first student");
